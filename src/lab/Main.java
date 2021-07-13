@@ -15,6 +15,7 @@ public class Main {
             dictionary.put(word);
         }
         System.out.println(dictionary);
+        System.out.println(dictionary.get("administration"));
     }
 
     // Reads words from file "words.txt" line by line and returns a set of words without duplicates

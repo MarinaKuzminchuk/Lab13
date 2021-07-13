@@ -15,6 +15,13 @@ public class Dictionary {
         }
     }
 
+    // calculate a hash for a word, use it to determine a bucket and return the bucket
+    public List<String> get(String word) {
+        int hash = hash(word);
+        int bucket = hash % hashTable.size();
+        return hashTable.get(bucket);
+    }
+
     // calculate a hash for a word, use it to determine a bucket and put the word in this bucket
     public void put(String word) {
         int hash = hash(word);
