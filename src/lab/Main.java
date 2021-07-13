@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         Set<String> words = readWordsFromFile();
-        Dictionary dictionary = new Dictionary(words.size());
+        Dictionary dictionary = new Dictionary(words.size() * 10);
         for (String word : words) {
             dictionary.put(word);
         }

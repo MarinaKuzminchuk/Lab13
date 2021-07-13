@@ -30,10 +30,13 @@ public class Dictionary {
     }
 
     // return an integer corresponding to a word in a dictionary
+    // this integer should be the same for permutations of a word
     private int hash(String word) {
-        // use the hashCode method from String class that already returns an integer for a string
-        // use Math.abs to turn negative integers into positive
-        return Math.abs(word.hashCode());
+        int hash = 0;
+        for (int i = 0; i < word.length(); i++) {
+            hash = hash + word.charAt(i);
+        }
+        return hash;
     }
 
     // override toString from class Object to print the dictionary in a more readable format
