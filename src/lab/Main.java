@@ -13,15 +13,21 @@ public class Main {
         Dictionary dictionary = new Dictionary(words.size() * 10);
         for (String word : words) {
             dictionary.put(word);
+            dictionary.getPermutations(word, "");
         }
+        
+        
+        
+        
         System.out.println(dictionary);
-        System.out.println(dictionary.get("administration"));
+        //System.out.println(dictionary.get("administration"));
+       // System.out.print(dictionary.getPermutations("", ""));
     }
 
     // Reads words from file "words.txt" line by line and returns a set of words without duplicates
     private static Set<String> readWordsFromFile() {
         Set<String> wordsSet = new HashSet<>();
-        try (Scanner scanner = new Scanner(new File("words.txt"))){
+        try (Scanner scanner = new Scanner(new File("D:/Desktop/INFORMATIK 2/Lab13/words.txt"))){
             while (scanner.hasNext()) {
                 String word = scanner.nextLine();
                 wordsSet.add(word);
