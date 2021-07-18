@@ -39,29 +39,47 @@ public class Dictionary {
         return hash;
     }
     
-    public String getPermutations(String str, String ans) {
-    	 String perm = "";
-    	
-    	if (str.length() == 0) {
-             System.out.print(ans + " ");
-             return str;
-         }
-    	 
-    	 for (int i = 0; i < str.length(); i++) {
-    		  
-             // ith character of str
-             char ch = str.charAt(i);
-   
-             // Rest of the string after excluding 
-             // the ith character
-             String ros = str.substring(0, i) + 
-                          str.substring(i + 1);
-   
-             // Recurvise call
-            perm = perm + getPermutations(ros, ans + ch);
-         }
-    	 return perm;
+    public void add(String word) {
+    	hashTable.add(new ArrayList<>());
+    	putIn(word, hashTable.size() - 1);
     }
+    
+    public boolean contains(String word) {
+    	for (int i = 0; i < hashTable.size(); i++) {
+    		 if (hashTable.get(i).contains(word)) return true;
+    	}
+    	System.out.println("Does not contain " + word);
+    	return false;
+    }
+    
+    public List<String> getRow(int i) {
+        return hashTable.get(i);
+    }
+
+    public void putIn(String word, int pos) {
+        hashTable.get(pos).add(word);
+    }
+    
+    public String getPermutations(String str, String ans, int pos) {
+   	 String perm = "";
+   	
+   	 if (str.length() == 0) {
+   		 hashTable.get(pos).add(ans);
+            return ans + " ";
+        }
+   	 
+   	 for (int i = 0; i < str.length(); i++) {  
+            // ith character of str
+            char ch = str.charAt(i);
+            String ros = str.substring(0, i) + 
+                         str.substring(i + 1);
+  
+            // permutations.add();
+            // Recurvise call
+            perm = perm + getPermutations(ros, ans + ch, pos);
+        }
+   	 return perm;
+   }
 
     // override toString from class Object to print the dictionary in a more readable format
     @Override
